@@ -65,7 +65,7 @@ export default function Dashboard() {
                   <h2 className="text-xl font-bold text-gray-900 mb-4">Find Mentors</h2>
                   <p className="text-gray-600 mb-4">Connect with experienced entrepreneurs</p>
                   <Link
-                    to="/browse-mentors"
+                    to="/mentors"
                     className="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
                   >
                     Browse Mentors
