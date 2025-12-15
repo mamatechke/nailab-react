@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Users, MessageSquare, TrendingUp, Calendar } from 'lucide-react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import DashboardLayout from '../components/DashboardLayout';
 import MentorshipRequests from '../components/MentorshipRequests';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -16,9 +15,18 @@ export default function Dashboard() {
     );
   }
 
+  if (!profile?.role) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Please complete your profile setup</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
+    <DashboardLayout role={profile.role as 'founder' | 'mentor'}>
 
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,8 +126,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
+    </DashboardLayout>
   );
 }
