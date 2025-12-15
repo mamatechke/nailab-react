@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { Users, MessageSquare, TrendingUp, Calendar } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import MentorshipRequests from '../components/MentorshipRequests';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function Dashboard() {
-  const { profile, loading } = useAuth();
+  const { user, profile, loading } = useAuth();
 
   if (loading) {
     return (
@@ -42,14 +43,20 @@ export default function Dashboard() {
                       <p className="text-sm text-gray-600 mb-1">{card.label}</p>
                       <p className="text-3xl font-bold text-gray-900">{card.value}</p>
                     </div>
-                    <div className={`p-3 bg-${card.color}-100 rounded-lg`}>
-                      <Icon className={`w-8 h-8 text-${card.color}-600`} />
+                    <div className="p-3 bg-gray-100 rounded-lg">
+                      <Icon className="w-8 h-8 text-teal-600" />
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
+
+          {user && profile?.role && (
+            <div className="mb-8">
+              <MentorshipRequests userId={user.id} role={profile.role as 'founder' | 'mentor'} />
+            </div>
+          )}
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {profile?.role === 'founder' && (
