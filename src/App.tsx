@@ -27,6 +27,7 @@ function App() {
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/browse-mentors" element={<BrowseMentors />} />
+        <Route path="/startups" element={<StartupDirectory />} />
         <Route path="/startup-directory" element={<StartupDirectory />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/pricing" element={<Pricing />} />
